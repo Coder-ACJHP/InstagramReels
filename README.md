@@ -2,6 +2,37 @@
 
 An example iOS application that replicates the Instagram Reels experience using SwiftUI.
 
+### Why This Project Exists
+
+- Demonstrate how to build a short-form video feed experience on iOS using a clear, learnable architecture.
+- Provide a practical reference for combining SwiftUI, AVKit, and Combine in one app.
+- Explore interaction-heavy UI behaviors (scroll-driven feed, playback controls, comments, like state) with maintainable code.
+- Serve as a foundation for extending into production-like features such as API integration, caching, and analytics.
+
+### Trade-off Analysis
+
+- **SwiftUI over UIKit**: Faster iteration and cleaner declarative UI, but less granular control for some complex video interactions compared to UIKit.
+- **MVVM simplicity vs strict Clean layering**: Easier onboarding and lower boilerplate, but some domain/data concerns may need further separation as the app grows.
+- **In-memory mock data vs backend persistence**: Speeds up development and demos, but does not represent real network latency, offline sync, or data consistency challenges.
+- **One `VideoPlayerViewModel` per reel**: Better playback/state isolation, but higher memory footprint when feed size scales.
+- **Local state management (`@Published`) vs global store**: Straightforward for current scope, but coordination across many features can become harder without centralized state patterns.
+
+### Metrics (Measurement Results)
+
+Current project status:
+
+- **Automated test coverage**: Not yet established (no committed XCTest/XCUITest suite in this repository snapshot).
+- **Performance benchmark suite**: Not yet established (no committed Instruments trace baselines).
+- **Build and run target**: App is configured for iOS simulator/device execution in Xcode 26.2.
+
+Recommended baseline metrics to add and track:
+
+- **Cold launch time**: Measure with Instruments (Time Profiler) on a fixed simulator/device profile.
+- **Reel first-frame time**: Time from reel visibility to first rendered video frame.
+- **Scroll smoothness**: FPS and dropped frame rate during rapid reel feed navigation.
+- **Memory usage**: Peak and steady-state memory while browsing N reels continuously.
+- **Playback reliability**: Video start success rate and rebuffer/failed-playback frequency.
+
 ### Features
 
 - **Reels feed**: Vertically scrollable list of short videos.
